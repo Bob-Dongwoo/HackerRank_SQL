@@ -1,0 +1,5 @@
+-- Let  be the number of CITY entries in STATION, and let  be the number of distinct CITY names in STATION; 
+-- query the value of from STATION.
+
+SELECT COUNT(city) - COUNT(DISTINCT city)
+FROM station
