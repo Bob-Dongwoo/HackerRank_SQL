@@ -11,8 +11,8 @@ OR city LIKE "%e"
 OR city LIKE "%i"
 OR city LIKE "%o"
 OR city LIKE "%u") 
-OR city NOT IN( -- Sub query to select the cities starting with vowel and than removing them from main query
-SELECT city
+OR city NOT IN( -- Using or to choose either.
+SELECT city     -- Sub query to select the cities starting with vowel and than removing them from main query
 FROM station
 WHERE city LIKE "a%"
 OR city LIKE "e%"
