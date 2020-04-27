@@ -1,0 +1,17 @@
+/* You did such a great job helping Julia with her last coding contest challenge that she wants you to work on this one, too!
+The total score of a hacker is the sum of their maximum scores for all of the challenges. 
+Write a query to print the hacker_id, name, and total score of the hackers ordered by the descending score. 
+If more than one hacker achieved the same total score, then sort the result by ascending hacker_id. 
+Exclude all hackers with a total score of 0 from your result. */
+
+SELECT hackers.hacker_id, name, SUM(unique_score)              -- Choosing hacker_id, name and unique score from sub query 
+FROM hackers                                                   -- sum the unique score to get the total score 
+JOIN (
+    SELECT hacker_id, challenge_id, MAX(score) AS unique_score -- Sub query to choose the max score for each challenge_id by hacker_id 
+    FROM submissions                                           -- Name the max score as unique_score
+    GROUP BY hacker_id, challenge_id)                          -- Group By clause needed to group non-operation variables
+    AS s
+ON hackers.hacker_id = s.hacker_id                             -- Inner Join the sub query to the main query on hacker_id
+GROUP BY hackers.hacker_id, name                               -- Group By clause to group non-operation variables
+HAVING SUM(unique_score) > 0                                   -- Having clause instead of Where clause for operations
+ORDER BY SUM(unique_score) DESC, hackers.hacker_id
