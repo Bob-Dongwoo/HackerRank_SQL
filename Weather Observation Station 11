@@ -1,0 +1,21 @@
+/* Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. 
+Your result cannot contain duplicates. */
+
+SELECT DISTINCT city -- removing any duplicates
+FROM station
+WHERE city NOT IN( -- Sub query to select the cities ending with vowel and than removing them from main query
+SELECT city
+FROM station
+WHERE city LIKE "%a"
+OR city LIKE "%e"
+OR city LIKE "%i"
+OR city LIKE "%o"
+OR city LIKE "%u") 
+OR city NOT IN( -- Sub query to select the cities starting with vowel and than removing them from main query
+SELECT city
+FROM station
+WHERE city LIKE "a%"
+OR city LIKE "e%"
+OR city LIKE "i%"
+OR city LIKE "o%"
+OR city LIKE "u%")
