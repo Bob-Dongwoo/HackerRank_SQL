@@ -1,6 +1,6 @@
 -- Query a list of CITY names from STATION with even ID numbers only. 
 --You may print the results in any order, but must exclude duplicates from your answer.
 
-SELECT DISTINCT CITY
+SELECT DISTINCT CITY -- excluding duplicates
 FROM STATION
-WHERE ID % 2 = 0
+WHERE ID % 2 = 0 -- even number of ID
