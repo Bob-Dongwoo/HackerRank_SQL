@@ -1,0 +1,13 @@
+/* Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, 
+but did not realize her keyboard's 0 key was broken until after completing the calculation. 
+She wants your help finding the difference between her miscalculation (using salaries with any zeroes removed), 
+and the actual average salary.
+
+Write a query calculating the amount of error (i.e.:  actual - miscalculated average monthly salaries), 
+and round it up to the next integer. */
+
+-- The input table shows the actual salry table. The error can be calculated by replacing 0 to an empty space. 
+-- The type of data does not change with replace function. After replacing it calculate the average and subtract it from the actual average
+-- CEIL is used to calculated the rounded up to the next integer
+SELECT CEIL(AVG(salary) - AVG(REPLACE(salary, 0, ''))) 
+FROM employees
