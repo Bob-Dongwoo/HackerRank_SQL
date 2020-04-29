@@ -1,0 +1,10 @@
+/* We define an employee's total earnings to be their monthly salary * months worked, and 
+the maximum total earnings to be the maximum total earnings for any employee in the Employee table. 
+Write a query to find the maximum total earnings for all employees as well as the total number 
+of employees who have maximum total earnings. Then print these values as 2 space-separated integers. */
+
+SELECT months * salary AS earning, COUNT(*) -- create a new variable to get total earnings = months * salary, and count the number  
+FROM employee                               -- employee earning the same amount
+GROUP BY earning                            -- group it by earning
+ORDER BY earning DESC                       -- order from highest to lowest
+LIMIT 1;                                    -- limit to only top 1
