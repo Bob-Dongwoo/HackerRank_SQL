@@ -1,0 +1,10 @@
+/* Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) 
+and their respective average city populations (CITY.Population) rounded down to the nearest integer.
+Note: CITY.CountryCode and COUNTRY.Code are matching key columns. */
+
+-- To round down the average of population, floor function is used and continent is selected to group by later
+SELECT continent, FLOOR(AVG(ct.population)) 
+FROM city AS c
+JOIN country AS con             -- Inner join the country table with city table
+ON ct.countrycode = con.code    -- The countrycode in city table matches to code in country table
+GROUP BY continent              -- Group by continent to get the average population by continent
