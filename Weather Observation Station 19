@@ -1,0 +1,11 @@
+/* Consider P1(a, b) and P2(c, d) to be two points on a 2D plane where (a, b) are the respective minimum and maximum values of 
+Northern Latitude (LAT_N) and (c, d) are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.
+Query the Euclidean Distance between points P1 and P2 and format your answer to display 4 decimal digits. /*
+
+-- Euclidean Distance is the square root of sum of the square of the difference in x axis and y axis
+
+SELECT ROUND(
+    SQRT(
+        POWER(MAX(LONG_W) - MIN(LONG_W), 2) + POWER(MAX(LAT_N) - MIN(LAT_N), 2) -- The equation is square root((d - c) ** 2 + (b - a) ** 2)
+    ), 4)                                                                       -- Than rounded to 4 decimal digits
+FROM station
